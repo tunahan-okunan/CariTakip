@@ -1,0 +1,34 @@
+﻿@model CariTakip.Areas.Admin.ViewModels.KullanicilarYeni
+
+<h1 style="text-align: center; color: #ffffff;">Yeni Kullanıcı Ekle</h1>
+
+<hr />
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <div class="form-group">
+
+            @Html.LabelFor(x => x.Adi,new { @style="color:#ffffff"})
+            @Html.TextBoxFor(x => x.Adi, new { @class = "form-control" , @placeholder = "Henüz bir Kullanıcı adı girilmedi." , @maxlength = "20" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Sifre,new { @style="color:#ffffff"})
+            @Html.PasswordFor(x => x.Sifre, new { @class = "form-control",@placeholder = "Henüz bir Şifre girilmedi.", @maxlength = "12" })
+        </div>
+
+       <div class="form-group">
+           @Html.Label("Roller", new { @style = "color:#ffffff" })
+         @* @Html.DropDownList("RolID", null, new { @class = "form-control" }) *@  
+          @* @Html.DropDownListFor(x=>x.Rol,Model.Rol, new { @class = "form-control" }) *@ 
+           @Html.DropDownListFor(x => x.RolId, Model.OrdersList, new { @class = "form-control" })
+        </div>
+    
+     
+        
+        <div class="form-group">
+            <input type="submit" value="Ekle" class="btn btn-success" />
+
+            <a href="@Url.Action("Index")" class="btn btn-primary pull-right">Geri Dön</a>
+        </div>
+    }
+
